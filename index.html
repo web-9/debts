@@ -1,0 +1,93 @@
+
+
+<style>
+   * {
+      box-sizing: border-box;
+   }
+   
+   :root {
+      
+   }
+   
+   body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+   }
+   
+   table {
+      border-radius: 9px;
+      width: clamp( 100px, 90%, 550px );
+      margin: auto;
+   }
+   
+   th {
+      background: #fc0fc0;
+   }
+   
+   tbody > tr:nth-child( odd ) {
+      background: #f5f5f5;
+   } tbody > tr:nth-child( even ) {
+      background: #bebebe;
+   }
+   
+   td {
+      padding: 0 0 0 1rem;
+   }
+</style>
+<h2>Contas</h2>
+<table>
+   <thead>
+      <tr>
+         <th>conta</th>
+         <th>valor</th>
+         <th>vencimento</th>
+         <th>estatus</th>
+      </tr>
+   </thead>
+   <tbody id="tabela_de_contas">
+   </tbody>
+</table>
+<script>
+   "use strict";
+   const 
+      _ = ( ...v ) => console.log( ...v )
+      ,
+      $ = v => document.querySelector( v )
+      ,
+      $$ = v => document.querySelectorAll( v )
+   ;
+   
+   let 
+      contas = [
+         {
+            id: "conta de luz",
+            valor: 220.00,
+            vencimento: "15/05",
+            status: "não paga",
+         },
+         {
+            id: "",
+            valor: 0,
+            vencimento: "",
+            status: "",
+         },
+      ]
+   ;
+   
+   addEventListener( "load", () => {
+      
+      contas.forEach( conta => {
+         tabela_de_contas.innerHTML += `
+         <tr>
+            <td>${ conta.id }</td>
+            <td>${ conta.valor }</td>
+            <td>${ conta.vencimento }</td>
+            <td>${ conta.status }</td>
+         </tr>
+         `
+      } );
+      _( $( "tabela_de_contas" ) );
+   } );
+</script>
